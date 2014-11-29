@@ -1,0 +1,19 @@
+GEM
+  remote: https://rubygems.org/
+  specs:
+    daemons (1.1.9)
+    libv8 (3.16.14.7)
+    react (0.0.2)
+      daemons
+    ref (1.0.5)
+    therubyracer (0.12.1)
+      libv8 (~> 3.16.14.0)
+      ref
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  libv8
+  react
+  therubyracer
