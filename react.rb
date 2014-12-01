@@ -1,7 +1,8 @@
 require 'v8'
 require 'json'
+require 'oj'
 
-$react_source = open("./node_modules/react/dist/react.min.js").read
+$react_source = File.read("./node_modules/react/dist/react.min.js")
 class ReactRenderer
   def initialize
     @ctx = V8::Context.new
@@ -21,18 +22,21 @@ class ReactRenderer
 
   def render name, props
     @ctx.eval """
-      React.renderToString(#{name}(#{props.to_json}))
+      React.renderToString(#{name}(#{Oj.dump(props, :mode => :compat)}))
     """
   end
 end
 
 r = ReactRenderer.new
-r.register "foo", open('templates/foo.js').read
+r.register "foo", File.read('templates/foo.js')
 
 # benchmark
 require "time"
 start = Time.now.to_f
-100000.times do
+N = 100000
+N.times do
   r.render("foo", {name: "Hoge", items: [1, 3, 4]})
 end
-p Time.now.to_f - start
+ret = Time.now.to_f - start
+p ret
+p ret/N

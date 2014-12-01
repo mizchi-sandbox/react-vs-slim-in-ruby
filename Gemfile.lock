@@ -6,12 +6,15 @@ GEM
     execjs (2.2.2)
     libv8 (3.16.14.7)
     method_source (0.8.2)
+    oj (2.11.1)
     pry (0.9.12.6)
       coderay (~> 1.0)
       method_source (~> 0.8)
       slop (~> 3.4)
     react (0.0.2)
       daemons
+    react_ruby (0.0.1)
+      execjs (~> 2.0)
     ref (1.0.5)
     slim (2.1.0)
       temple (~> 0.6.9)
@@ -29,7 +32,9 @@ PLATFORMS
 DEPENDENCIES
   execjs
   libv8
+  oj
   pry
   react
+  react_ruby
   slim
   therubyracer
